@@ -1,2 +1,2 @@
-# curso-alura-phpunit
-Replicação das lições do curso [PHP e TDD: testes com PHPUnit](https://cursos.alura.com.br/course/phpunit-tdd)
+# alura-course-phpunit
+Vinicius Dias's course [PHP e TDD: testes com PHPUnit](https://cursos.alura.com.br/course/phpunit-tdd) replication
