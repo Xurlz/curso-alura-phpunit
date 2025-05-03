@@ -1,4 +1,7 @@
 {
+    "autoload" : {
+        "psr-4": { "Charles\\Auction\\" : [ "src/" ] }
+    },
     "require": {
         "phpunit/phpunit": "^10"
     }
