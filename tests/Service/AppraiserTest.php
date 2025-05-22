@@ -47,5 +47,43 @@ class AppraiserTest extends TestCase
     $this->assertEquals(2000, $auctioneer->getLowestValue());
 
   }
+
+  public function testAppraiserMustGetTheGreatestBidsAtDescendingOrder() : void
+  {
+    $auction = new Auction('Fiat Uno 0Km');
+    $mary = new User('Mary');
+    $john = new User('John');
+
+    $auction->placeBid(new Bid($mary, 2500));
+    $auction->placeBid(new Bid($john, 2000));
+
+    $auctioneer = new Appraiser;
+
+    // Act - When / Code to be executed
+    $auctioneer->evaluate($auction);
+
+    // Assert - Then / Verify if the output was the expected
+    $this->assertEquals(2500, $auctioneer->getGreatestValue());
+
+  }
+
+  public function testAppraiserMustGetTheLowestBidsAtDescendingOrder() : void
+  {
+    $auction = new Auction('Fiat Uno 0Km');
+    $mary = new User('Mary');
+    $john = new User('John');
+
+    $auction->placeBid(new Bid($mary, 2500));
+    $auction->placeBid(new Bid($john, 2000));
+
+    $auctioneer = new Appraiser;
+
+    // Act - When / Code to be executed
+    $auctioneer->evaluate($auction);
+
+    // Assert - Then / Verify if the output was the expected
+    $this->assertEquals(2500, $auctioneer->getGreatestValue());
+
+  }
 }
 
