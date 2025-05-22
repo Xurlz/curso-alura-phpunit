@@ -20,9 +20,7 @@ class Appraiser
 
     $bids = $auction->getBids();
 
-    usort($bids, function(Bid $bid1, Bid $bid2) {
-      return $bid1->getValue() - $bid2->getValue();
-    });
+    usort($bids, fn(Bid $bid1, Bid $bid2) => $bid1->getValue() - $bid2->getValue() );
     $this->greatestValues = array_slice($bids,0,3);
   }
 
