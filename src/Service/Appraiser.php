@@ -21,5 +21,10 @@ class Appraiser
   {
     return $this->greatestValue;
   }
+
+  public function getLowestValue() : float
+  {
+    return $this->lowestValue;
+  }
 }
 
