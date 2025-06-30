@@ -67,7 +67,7 @@ class AppraiserTest extends TestCase
   /**
    * @return array<Auction>
    */
-  public function auctionAtAscendingOrder() : Array
+  public static function auctionAtAscendingOrder() : Array
   {
     $auction = new Auction('Fiat Uno 200000Km');
     $alice = new User('Alice');
@@ -84,7 +84,7 @@ class AppraiserTest extends TestCase
   /**
    * @return array<Auction>
    */
-  public function auctionAtDescendingOrder() : Array
+  public static function auctionAtDescendingOrder() : Array
   {
     $auction = new Auction('Fiat Uno 200000Km');
     $alice = new User('Alice');
@@ -102,7 +102,7 @@ class AppraiserTest extends TestCase
   /**
    * @return array<Auction>
    */
-  public function auctionAtScrambledOrder() : Array
+  public static function auctionAtScrambledOrder() : Array
   {
     $auction = new Auction('Fiat Uno 200000Km');
     $alice = new User('Alice');
