@@ -10,6 +10,12 @@ use Charles\Auction\Model\Bid;
 
 class AppraiserTest extends TestCase
 {
+  private Appraiser $auctioneer;
+
+  protected function setUp() : void
+  {
+    $this->auctioneer = new Appraiser;
+  }
   /**
    * @dataProvider auctionAtAscendingOrder
    * @dataProvider auctionAtDescendingOrder
@@ -17,13 +23,11 @@ class AppraiserTest extends TestCase
    */
   public function testAppraiserMustGetTheGreatestBid(Auction $auction) : void
   {
-    $auctioneer = new Appraiser;
-
     // Act - When / Code to be executed
-    $auctioneer->evaluate($auction);
+    $this->auctioneer->evaluate($auction);
 
     // Assert - Then / Verify if the output was the expected
-    $this->assertEquals(2500, $auctioneer->getGreatestValue());
+    $this->assertEquals(2500, $this->auctioneer->getGreatestValue());
 
   }
 
@@ -34,14 +38,11 @@ class AppraiserTest extends TestCase
    */
   public function testAppraiserMustGetTheLowestBid(Auction $auction) : void
   {
-
-    $auctioneer = new Appraiser;
-
     // Act - When / Code to be executed
-    $auctioneer->evaluate($auction);
+    $this->auctioneer->evaluate($auction);
 
     // Assert - Then / Verify if the output was the expected
-    $this->assertEquals(1700, $auctioneer->getLowestValue());
+    $this->assertEquals(1700, $this->auctioneer->getLowestValue());
 
   }
 
@@ -52,16 +53,14 @@ class AppraiserTest extends TestCase
    */
   public function testAppraiserMustFindThe3GreatestValues(Auction $auction) : void
   {
-    $auctioneer = new Appraiser;
-    $auctioneer->evaluate($auction);
+    $this->auctioneer->evaluate($auction);
 
-    $theGreatest = $auctioneer->getTheGreatestValues();
+    $theGreatest = $this->auctioneer->getTheGreatestValues();
 
     $this->assertCount(3, $theGreatest);
     $this->assertEquals(2500, $theGreatest[0]->getValue());
     $this->assertEquals(2000, $theGreatest[1]->getValue());
     $this->assertEquals(1700, $theGreatest[2]->getValue());
-
   }
 
   /**
