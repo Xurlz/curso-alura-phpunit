@@ -14,7 +14,6 @@ class AppraiserTest extends TestCase
 
   protected function setUp() : void
   {
-    echo "Running setUp". PHP_EOL;
     $this->auctioneer = new Appraiser;
   }
   /**
@@ -69,7 +68,6 @@ class AppraiserTest extends TestCase
    */
   public static function auctionAtAscendingOrder() : Array
   {
-    echo "Generating aunction at ascending order" . PHP_EOL;
     $auction = new Auction('Fiat Uno 200000Km');
     $alice = new User('Alice');
     $bob = new User('Bob');
@@ -87,7 +85,6 @@ class AppraiserTest extends TestCase
    */
   public static function auctionAtDescendingOrder() : Array
   {
-    echo "Generating auction at descending order" . PHP_EOL;
     $auction = new Auction('Fiat Uno 200000Km');
     $alice = new User('Alice');
     $bob = new User('Bob');
@@ -106,7 +103,6 @@ class AppraiserTest extends TestCase
    */
   public static function auctionAtScrambledOrder() : Array
   {
-    echo "Generating auction at scrambled order" . PHP_EOL;
     $auction = new Auction('Fiat Uno 200000Km');
     $alice = new User('Alice');
     $bob = new User('Bob');
