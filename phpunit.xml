@@ -8,4 +8,7 @@
       <directory>tests</directory>
     </testsuite>
   </testsuites>
+  <logging>
+    <testdoxText outputFile="executed-tests.txt"/>
+  </logging>
 </phpunit>
