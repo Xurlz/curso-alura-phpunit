@@ -77,7 +77,7 @@ class AppraiserTest extends TestCase
     $auction->placeBid(new Bid($bob, 2000));
     $auction->placeBid(new Bid($carl, 2500));
 
-    return [[$auction]];
+    return ['ascending-order' => [$auction]];
   }
 
   /**
@@ -94,7 +94,7 @@ class AppraiserTest extends TestCase
     $auction->placeBid(new Bid($bob, 2000));
     $auction->placeBid(new Bid($alice, 1700));
 
-    return [[$auction]];
+    return ['descending-order' => [$auction]];
   }
 
 
@@ -112,7 +112,7 @@ class AppraiserTest extends TestCase
     $auction->placeBid(new Bid($carl, 2500));
     $auction->placeBid(new Bid($alice, 1700));
 
-    return [[$auction]];
+    return ['scrambled-order' => [$auction]];
   }
 }
 
