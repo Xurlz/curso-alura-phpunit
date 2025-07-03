@@ -24,8 +24,14 @@ class Auction
 
   public function placeBid(Bid $bid) : void
   {
-    if(!empty($this->bids) && $bid->getUser() == $this->bids[array_key_last($this->bids)]->getUser()) return;
+    if(!empty($this->bids) && $this->isFromTheLastUser($bid)) return;
     $this->bids[] = $bid;
+  }
+
+  private function isFromTheLastUser(Bid $bid) : bool
+  {
+    $lastBid = $this->bids[array_key_last($this->bids)];
+    return $bid->getUser() == $lastBid->getUser();
   }
 }
 
