@@ -2,5 +2,9 @@
 
 namespace Charles\Auction\Model;
 
-class User {}
+class User {
+  public function __construct(
+    private string $name
+  ) {}
+}
 
