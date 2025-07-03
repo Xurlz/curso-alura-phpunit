@@ -9,6 +9,19 @@ use PHPUnit\Framework\TestCase;
 
 class AuctionTest extends TestCase {
 
+  public function testAuctionMustntPlaceRepeatedBids() : void
+  {
+    $auction = new Auction('Flipper Zero (first prototype)');
+
+    $alice = new User('Alice');
+
+    $auction->placeBid(new Bid($alice, 1000));
+    $auction->placeBid(new Bid($alice, 1500));
+
+    $this->assertCount(1, $auction->getBids());
+    $this->assertEquals(1000, $auction->getBids()[0]->getValue());
+  }
+
   /**
    * @dataProvider createBids
    * @param array<int> $values
