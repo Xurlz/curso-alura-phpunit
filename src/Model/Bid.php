@@ -9,6 +9,11 @@ class Bid
     private float $value
   ) {}
 
+  public function getUser() : User
+  {
+    return $this->user;
+  }
+
   public function getValue() : float
   {
     return $this->value;
