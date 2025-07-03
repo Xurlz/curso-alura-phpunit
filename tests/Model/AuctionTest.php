@@ -9,6 +9,29 @@ use PHPUnit\Framework\TestCase;
 
 class AuctionTest extends TestCase {
 
+  public function testAuctionMustntPlaceMoreThan5BidsPerUser() : void
+  {
+    $auction = new Auction('Blue beatle');
+
+    $alice = new User('Alice');
+    $bob = new User('Bob');
+
+    $auction->placeBid(new Bid($alice, 1000));
+    $auction->placeBid(new Bid($bob, 1500));
+    $auction->placeBid(new Bid($alice, 2000));
+    $auction->placeBid(new Bid($bob, 2500));
+    $auction->placeBid(new Bid($alice, 3000));
+    $auction->placeBid(new Bid($bob, 3500));
+    $auction->placeBid(new Bid($alice, 4000));
+    $auction->placeBid(new Bid($bob, 4500));
+    $auction->placeBid(new Bid($alice, 5000));
+    $auction->placeBid(new Bid($bob, 5500));
+    $auction->placeBid(new Bid($alice, 6000));
+
+    $this->assertCount(10, $auction->getBids());
+    $this->assertEquals(5500, $auction->getBids()[array_key_last($auction->getBids())]->getValue());
+  }
+
   public function testAuctionMustntPlaceRepeatedBids() : void
   {
     $auction = new Auction('Flipper Zero (first prototype)');
