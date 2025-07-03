@@ -10,5 +10,6 @@
   </testsuites>
   <logging>
     <testdoxText outputFile="executed-tests.txt"/>
+    <testdoxHtml outputFile="executed-tests.html"/>
   </logging>
 </phpunit>
