@@ -25,7 +25,26 @@ class Auction
   public function placeBid(Bid $bid) : void
   {
     if(!empty($this->bids) && $this->isFromTheLastUser($bid)) return;
+
+    $user = $bid->getUser();
+
+    $totalBids = $this->totalBidsPerUser($user);
+
+    if($totalBids >= 5) return;
+
     $this->bids[] = $bid;
+  }
+
+  private function totalBidsPerUser(User $user) : int
+  {
+    $totalBidsPerUser = function(?int $accumulated,Bid $currentBid) use ($user) {
+      if($currentBid->getUser() == $user) {
+        return ++$accumulated;
+      }
+      return $accumulated;
+    };
+
+    return array_reduce($this->bids, $totalBidsPerUser, 0);
   }
 
   private function isFromTheLastUser(Bid $bid) : bool
