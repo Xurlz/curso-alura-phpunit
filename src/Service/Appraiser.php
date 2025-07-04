@@ -13,6 +13,10 @@ class Appraiser
 
   public function evaluate(Auction $auction) : void
   {
+    if($auction->hasFinished()) {
+      throw new \DomainException('Auction already finished');
+    }
+
     if(empty($auction->getBids())) {
       throw new \DomainException('Empty auctions evaluation is not possible');
     }

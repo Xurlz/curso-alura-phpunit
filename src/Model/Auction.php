@@ -8,6 +8,7 @@ class Auction
 {
   private array $bids;
   private string $description;
+  private bool $finished;
 
   public function __construct(
     string $description
@@ -15,6 +16,17 @@ class Auction
   {
     $this->bids = [];
     $this->description = $description;
+    $this->finished = false;
+  }
+
+  public function finish() : void
+  {
+    $this->finished = true;
+  }
+
+  public function hasFinished() : bool
+  {
+    return $this->finished;
   }
 
   public function getBids() : array
