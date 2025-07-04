@@ -13,6 +13,10 @@ class Appraiser
 
   public function evaluate(Auction $auction) : void
   {
+    if(empty($auction->getBids())) {
+      throw new \DomainException('Empty auctions evaluation is not possible');
+    }
+
     foreach($auction->getBids() as $bid) {
       if($bid->getValue() > $this->greatestValue) $this->greatestValue = $bid->getValue();
       if($bid->getValue() < $this->lowestValue) $this->lowestValue = $bid->getValue();
