@@ -26,7 +26,7 @@ class AuctionTest extends TestCase {
     $this->auctioneer->evaluate($auction);
   }
 
-  public function testEmptyAuctionMustntBeAvaluated() : void
+  public function testEmptyAuctionMustntBeEvaluated() : void
   {
     $auction = new Auction('Yellow Brasilia');
     $this->auctioneer = new Appraiser;
