@@ -24,13 +24,15 @@ class Auction
 
   public function placeBid(Bid $bid) : void
   {
-    if(!empty($this->bids) && $this->isFromTheLastUser($bid)) return;
+    if(!empty($this->bids) && $this->isFromTheLastUser($bid))
+      throw new \DomainException('User can\'t place two consecutive bids');
 
     $user = $bid->getUser();
 
     $totalBids = $this->totalBidsPerUser($user);
 
-    if($totalBids >= 5) return;
+    if($totalBids >= 5)
+      throw new \DomainException('User can\'t place more than 5 bids per auction');
 
     $this->bids[] = $bid;
   }
