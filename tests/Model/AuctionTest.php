@@ -5,9 +5,25 @@ namespace Charles\Auction\Tests\Model;
 use Charles\Auction\Model\Auction;
 use Charles\Auction\Model\Bid;
 use Charles\Auction\Model\User;
+use Charles\Auction\Service\Appraiser;
 use PHPUnit\Framework\TestCase;
 
 class AuctionTest extends TestCase {
+
+  /** @var Appraiser */
+  private Appraiser $auctioneer;
+
+  public function testEmptyAuctionMustntBeAvaluated() : void
+  {
+    $auction = new Auction('Yellow Brasilia');
+    $this->auctioneer = new Appraiser;
+
+    try {
+      $this->auctioneer->evaluate($auction);
+    } catch (\DomainException $e) {
+      $this->assertEquals('Empty auctions evaluation is not possible',$e->getMessage());
+    }
+  }
 
   public function testAuctionMustntPlaceMoreThan5BidsPerUser() : void
   {
