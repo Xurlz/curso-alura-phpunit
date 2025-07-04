@@ -23,6 +23,9 @@ class AuctionTest extends TestCase {
 
   public function testAuctionMustntPlaceMoreThan5BidsPerUser() : void
   {
+    $this->expectException(\DomainException::class);
+    $this->expectExceptionMessage('User can\'t place more than 5 bids per auction');
+
     $auction = new Auction('Blue beatle');
 
     $alice = new User('Alice');
@@ -46,6 +49,9 @@ class AuctionTest extends TestCase {
 
   public function testAuctionMustntPlaceRepeatedBids() : void
   {
+    $this->expectException(\DomainException::class);
+    $this->expectExceptionMessage('User can\'t place two consecutive bids');
+
     $auction = new Auction('Flipper Zero (first prototype)');
 
     $alice = new User('Alice');
