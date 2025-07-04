@@ -13,6 +13,19 @@ class AuctionTest extends TestCase {
   /** @var Appraiser */
   private Appraiser $auctioneer;
 
+  public function testFinishedAuctionMustntBeEvaluated() : void
+  {
+    $this->expectException(\DomainException::class);
+    $this->expectExceptionMessage('Auction already finished');
+
+    $auction = new Auction('Legendary Stair roof Fiat Uno');
+    $auction->placeBid(new Bid(new User('Turing'), 2000));
+    $auction->finish();
+
+    $this->auctioneer = new Appraiser;
+    $this->auctioneer->evaluate($auction);
+  }
+
   public function testEmptyAuctionMustntBeAvaluated() : void
   {
     $auction = new Auction('Yellow Brasilia');
