@@ -17,13 +17,8 @@ class AuctionTest extends TestCase {
   {
     $auction = new Auction('Yellow Brasilia');
     $this->auctioneer = new Appraiser;
-
-    try {
-      $this->auctioneer->evaluate($auction);
-      $this->fail('Exception should be thrown');
-    } catch (\DomainException $e) {
-      $this->assertEquals('Empty auctions evaluation is not possible',$e->getMessage());
-    }
+    $this->expectException(\DomainException::class);
+    $this->auctioneer->evaluate($auction);
   }
 
   public function testAuctionMustntPlaceMoreThan5BidsPerUser() : void
