@@ -9,7 +9,7 @@
     </testsuite>
   </testsuites>
   <logging>
-    <testdoxText outputFile="executed-tests.txt"/>
-    <testdoxHtml outputFile="executed-tests.html"/>
+    <testdoxText outputFile="/tmp/executed-tests.txt"/>
+    <testdoxHtml outputFile="/tmp/executed-tests.html"/>
   </logging>
 </phpunit>
